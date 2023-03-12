@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "mode": "debug",
+            "name": "Launch Server",
+            "program": "cmd/app",
+            "request": "launch",
+            "type": "go"
+        }
+    ],
+    "version": "0.2.0"
+}
