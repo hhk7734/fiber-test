@@ -8,6 +8,7 @@ import (
 
 func NewToDo(
 	userID uuid.UUID, title string, category *string, description string,
+	dueDate *time.Time,
 ) ToDo {
 	return &ToDoRaw{
 		id:          uuid.New(),
@@ -15,6 +16,8 @@ func NewToDo(
 		title:       title,
 		category:    category,
 		description: description,
+		dueDate:     dueDate,
+		finishedAt:  nil,
 		createdAt:   time.Now(),
 		updatedAt:   time.Now(),
 		deletedAt:   nil,
@@ -30,6 +33,10 @@ type ToDo interface {
 	SetCategory(*string) error
 	Description() string
 	SetDescription(string) error
+	DueDate() *time.Time
+	SetDueDate(*time.Time) error
+	FinishedAt() *time.Time
+	SetFinishedAt(*time.Time) error
 	CreatedAt() time.Time
 	UpdatedAt() time.Time
 	DeletedAt() *time.Time
@@ -41,6 +48,8 @@ type ToDoRaw struct {
 	title       string
 	category    *string
 	description string
+	dueDate     *time.Time
+	finishedAt  *time.Time
 	createdAt   time.Time
 	updatedAt   time.Time
 	deletedAt   *time.Time
@@ -78,6 +87,24 @@ func (t *ToDoRaw) Description() string {
 
 func (t *ToDoRaw) SetDescription(description string) error {
 	t.description = description
+	return nil
+}
+
+func (t *ToDoRaw) DueDate() *time.Time {
+	return t.dueDate
+}
+
+func (t *ToDoRaw) SetDueDate(dueDate *time.Time) error {
+	t.dueDate = dueDate
+	return nil
+}
+
+func (t *ToDoRaw) FinishedAt() *time.Time {
+	return t.finishedAt
+}
+
+func (t *ToDoRaw) SetFinishedAt(finishedAt *time.Time) error {
+	t.finishedAt = finishedAt
 	return nil
 }
 
