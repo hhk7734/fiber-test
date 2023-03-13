@@ -5,6 +5,7 @@ go 1.20
 require (
 	github.com/gofiber/fiber/v2 v2.42.0
 	github.com/google/uuid v1.3.0
+	github.com/hhk7734/go-optional v0.1.0
 	go.uber.org/zap v1.24.0
 )
 
